@@ -39,7 +39,7 @@ alert ("ma variable a est de type: " + typeof (a) +
 "\nma variable c est de type: " + typeof (c) + 
 "\nma variable d est de type : " + typeof (d));
 ```
-
+![capture1](https://github.com/AnkaDemetria/JavaScriptInitiation/blob/main/img/capture1.png)
 
 
 
@@ -49,6 +49,7 @@ var machaine = new String("exemple");
 alert("ma variable machaine est de type : " + typeof(machaine) + )
 "\nma variable d est de type : " + typeof (machaine));
 ```
+![capture2](https://github.com/AnkaDemetria/JavaScriptInitiation/blob/main/img/capture2.png)
 
 ```var n = null;
 var u = undefined;
@@ -58,7 +59,7 @@ alert("ma variable n est de type : " + typeof(n) +
 "\nma variable u est de type : " + typeof (u) +
 "\nma variable nn est de type : " + typeof (nn));
 ```
-
+![capture3](https://github.com/AnkaDemetria/JavaScriptInitiation/blob/main/img/capture3.png)
 
 
 
