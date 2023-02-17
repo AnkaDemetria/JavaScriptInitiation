@@ -204,6 +204,11 @@ En revanche, si on utilise le triple signe égal, alors l’égalité ne va pas 
 
 On va suivre exactement le même raisonnement pour les deux opérateurs != et !== qui vont nous permettre de tester respectivement la différence en termes de valeurs simplement et la différence en termes de valeurs ou de type.
 
+###L'opérateur ternaire de comparaison
+Les structures conditionnelles ternaires (souvent simplement abrégées “ternaires”) correspondent à une autre façon d’écrire nos conditions en utilisant une syntaxe basée sur l’opérateur ternaire ? : qui est un opérateur de comparaison. Les ternaires vont utiliser une syntaxe très condensée et nous allons ainsi pouvoir écrire toute une condition sur une ligne et accélérer la vitesse d’exécution de notre code.
+
+Les structures ternaires vont se présenter sous la forme suivante : test ? code à exécuter si true : code à exécuter si false.
+
 
 ###*Exercice*
 Avec 3 variables: var heure ouverture, var heure travail, var heure actuelle
@@ -256,10 +261,11 @@ Nous connaissons déjà bien l’opérateur d’affectation le plus utilisé qui
 | /= | Divise puis affecte le résultat |
 | %= | Calcule le modulo puis affecte le résultat|
 
-![capture 7]()
+![capture 7](https://github.com/AnkaDemetria/JavaScriptInitiation/blob/main/img/capture7.png)
 Ici, vous devez bien comprendre que les opérateurs d’affectation combinés nous permettent d’effectuer deux types d’opérations à la suite. Dans l’exemple ci-dessus, on réalise des opérations arithmétiques puis d’affectation.
 
 Ainsi, l’opérateur += par exemple va nous permettre d’ajouter une valeur à la valeur contenue dans une variable puis d’affecter le résultat dans cette même variable. La nouvelle valeur va ainsi écraser la valeur précédente.
+
 
 ##LES TABLEAUX
 Pour créer un tableau, vous devez placer une ligne de tirets (-) sous la ligne d'entête et séparer les colonnes avec les |
@@ -275,6 +281,10 @@ vous pouvez aussi préciser l'alignement en utilisant des :
 *******
 #<center>LES CONDITIONS</center>
 ##La condition if
+La condition if est l’une des conditions les plus utilisées et est également la plus simple à appréhender puisqu’elle va juste nous permettre d’exécuter un bloc de code si et seulement si le résultat d’un test vaut true.
+
+
+##La condition if... if else...else
 
 ##Le switch
 L’instruction switch va nous permettre d’exécuter un code en fonction de la valeur d’une variable. On va pouvoir gérer autant de situations ou de « cas » que l’on souhaite.
@@ -298,5 +308,307 @@ switch(note){
             break;
 }
 ```
+```
+var note = 18.5;
+var noteAmericaine = "";
+
+if(note == 20){
+noteAmericaine = "A+"
+} else if (note>= 18 && note < 19){
+    noteAmericaine = "A"
+} else if (note>= 15 && note < 18){
+    noteAmericaine = "B"
+} else if (note>= 12 && note < 15){
+    noteAmericaine = "C"
+} else if (note>= 9 && note < 12){
+    noteAmericaine = "D"
+} else if (note>= 6 && note < 9){
+    noteAmericaine = "E"
+} else if (note<6){
+    noteAmericaine = "F"
+}else {
+    noteAmericaine = "ABS"
+}
+
+alert(noteAmericaine)
+
+switch (noteAmericaine) {
+    case "A+":
+        alert("Excellent travail")
+        break;
+    case "A":
+        alert("Très bien")
+        break;
+    case "B":
+        alert("Bien")
+        break;
+    case "C":
+        alert("Correct")
+        break;
+    case "D":
+        alert("Moyen")
+        break;
+    case "E":
+        alert("Insuffisant")
+        break;
+    default:
+            alert("nul")
+            break;
+}
+```
+***********
+##<center>LES TABLEAUX ARRAY</center>
+
+###Les principaux
+
+var arrayNbr = [1, 2, 3];
+var arrayStr = ["a", "b", "c"];
+ arrayNbr.push(4); //[1, 2, 3, 4] ajoute la valeur indiqué à la fin du tableau
+ arrayNbr.pop(); //[1, 2] retire la dernière valeur
+ arrayNbr.shift(); //[2, 3] retire la première valeur
+ arrayNbr.unshift(0); //[0, 1, 2, 3] ajoute la valeur indiqué au début du tableau
+ arrayStr.concat("d"); //fusionne des tableaux sans changer les valeurs du tableau initial
+ arrayStr.join('-'); // a-b-c joindre les valeurs du tableau sans changer les valeurs du tableau initial
+ arrayStr.slice(1); // ["b", "c"] retire le nombre d'éléments indiqué du tableau en partant du début sans changer les valeurs du tableau initial
+ arrayStr.slice(-1); // ["b", "c"] retire le nombre d'éléments indiqué du tableau en partant du début et en comptant depuis la fin sans changer les valeurs du tableau initial
+ arrayStr.includes("c"); //true vérifie si la valeur existe
+ arrayStr.indexOf("c"); //2 renvoi le position (index) de la valeur dans le tableau
+ arrayNbr.reduce((acc, cou)=> acc + cou ) //6 additionne tous les éléments du tableau
+
+arrayNbr.find(el => el > 2) //3 renvoie la valeur du premier élément trouvé dans le tableau qui respecte la condition
+ arrayNbr.findIndex(el => el > 2) //2 renvoie l'index du premier élément trouvé dans le tableau qui respecte la condition
+arrayNbr.map(el => el * 2); //[2, 4, 6] crée un nouveau tableau avec les résultats de l'appel d'une fonction fournie sur chaque élément du tableau appelant.
+ arrayNbr.some(el => el > 2); //true passe le test implémenté par la fonction fournie. Elle renvoie un booléen indiquant le résultat du test.
+ arrayNbr.filter(el => el > 1) // [2,3] renvoi tous les éléments qui respectent la condition
+ arrayNbr.every(el => el > 1);
+ arrayNbr.reverse();
+
+ <u>Methode push</u>
+La méthode push() ajoute un ou plusieurs éléments à la fin d'un tableau et retourne la nouvelle taille du tableau. On aura [1,2,3,4]
+
+```
+var ArrayNbr = [1, 2, 3];
+
+ArrayNbr.push(4);  
+
+```
+<u>Methode pop</u>
+La méthode pop() supprime le dernier élément d'un tableau et retourne cet élément. Cette méthode modifie la longueur du tableau. On aura: [1,2]
+
+```
+var ArrayNbr = [1, 2, 3];
+
+ArrayNbr.pop(1, 2);  
+
+```
+<u>Methode shift</u>
+La méthode shift() permet de retirer le premier élément d'un tableau et de renvoyer cet élément. Cette méthode modifie la longueur du tableau. On aura: [2,3]
+
+```
+var ArrayNbr = [1, 2, 3];
+
+ArrayNbr.shift(1, 2); 
+
+```
+<u>Methode unshift</u>
+La méthode unshift() ajoute un ou plusieurs éléments au début d'un tableau et renvoie la nouvelle longueur du tableau. On aura: [0,1,2,3]
+
+```
+var ArrayNbr = [1, 2, 3];
+
+ArrayNbr.unshift(0);  
+
+```
+<u>Methode concat</u>
+La méthode concat() est utilisée afin de fusionner deux ou plusieurs tableaux en les concaténant. Cette méthode ne modifie pas les tableaux existants, elle renvoie un nouveau tableau qui est le résultat de l'opération. On aura: ("d")
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.concat("d");  
+
+```
+<u>Methode join</u>
+La méthode join() crée et renvoie une nouvelle chaîne de caractères en concaténant tous les éléments d'un tableau (ou d'un objet semblable à un tableau). La concaténation utilise la virgule ou une autre chaîne, fournie en argument, comme séparateur. On aura: a-b-c
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.join("-");  
+
+```
+<u>Methode slice </u>
+La méthode slice() renvoie un objet tableau, contenant une copie superficielle (shallow copy) d'une portion du tableau d'origine, la portion est définie par un indice de début et un indice de fin (exclus). Le tableau original ne sera pas modifié. On aura:["b", "c"]
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.slice(1);
+
+```
+Avec un nombre négatif: On aura:["b", "c"]
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.slice(1);
+console.log(ArrayStr.slice(-1)); 
+
+```
+<u>Methode includes </u>
+La méthode includes() permet de déterminer si un tableau contient une valeur et renvoie true si c'est le cas, false sinon. Affichera:(true)
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.includes("c");
+console.log(ArrayStr.includes("c"));
+
+```
+<u>Methode IndexOf</u>
+La méthode indexOf() renvoie le premier indice pour lequel on trouve un élément donné dans un tableau. Si l'élément cherché n'est pas présent dans le tableau, la méthode renverra -1. Affichera:(2)
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayStr.indexOf ("c");
+console.log(ArrayStr.indexOf ("c")); 
+
+```
+<u>Methode reduce</u>
+La méthode reduce() applique une fonction qui est un « accumulateur » et qui traite chaque valeur d'une liste (de la gauche vers la droite) afin de la réduire à une seule valeur. Affichera: 6
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.reduce((acc,cou)=> acc + cou);  
+
+```
+<u>Methode findIndex</u>
+La méthode findIndex() renvoie l'index du premier élément du tableau qui satisfait une condition donnée par une fonction. Si la fonction renvoie faux pour tous les éléments du tableau, le résultat vaut -1.
+Affichera: 2
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.findIndex(el => el > 2);
+console.log(ArrayNbr.findIndex(el => el > 2));
+console.table(ArrayNbr) 
+
+```
+<u>Methode find</u>
+La méthode find() renvoie la valeur du premier élément trouvé dans le tableau qui respecte la condition donnée par la fonction de test passée en argument. Sinon, la valeur undefined est renvoyée.
+Affichera:3
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.find(el => el > 2);
+console.log(ArrayNbr); 
+
+```
+<u>Methode map</u>
+La méthode map() crée un nouveau tableau avec les résultats de l'appel d'une fonction fournie sur chaque élément du tableau appelant.
+Affichera: [2,4,6]
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.map(el => el * 2);
+console.log(ArrayNbr.map(el => el * 2));  
+
+```
+<u>Methode some</u>
+La méthode some() teste si au moins un élément du tableau passe le test implémenté par la fonction fournie. Elle renvoie un booléen indiquant le résultat du test.
+Affichera: true
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.some(el => el > 5);
+console.log(ArrayNbr.some(el => el > 5)); 
+
+```
+<u>Methode filter</u>
+La méthode filter() crée et retourne un nouveau tableau contenant tous les éléments du tableau d'origine qui remplissent une condition déterminée par la fonction callback.
+Affichera: [2,3]
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.filter(el => el > 1);
+console.log(ArrayNbr.filter(el => el > 1));
+
+```
+<u>Methode every</u>
+La méthode every() permet de tester si tous les éléments d'un tableau vérifient une condition donnée par une fonction en argument. Cette méthode renvoie un booléen pour le résultat du test.
+Affichera: 
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.every(el => el > 1);
+console.log(ArrayNbr.every(el => el > 1));
+
+```
+<u>Methode reverse</u>
+La méthode reverse() transpose les éléments d'un tableau : le premier élément devient le dernier et le dernier devient le premier et ainsi de suite.
+Affichera: 
+
+```
+var ArrayNbr = [1, 2, 3];
+var ArrayStr = ["a", "b", "c"];
+
+ArrayNbr.reverse();
+console.log(ArrayNbr.reverse);
+
+```
+
+###<center>LES FONCTIONS</center>
+
+##<u>Math random</u>
+La fonction Math.random() renvoie un nombre flottant pseudo-aléatoire compris dans l'intervalle [0, 1[ (ce qui signifie que 0 est compris dans l'intervalle mais que 1 en est exclu) selon une distribution approximativement uniforme sur cet intervalle. Ce nombre peut ensuite être multiplié afin de couvrir un autre intervalle. La graine (seed) du générateur est choisie par l'algorithme et ne peut pas être choisie ou réinitialisée par l'utilisateur.
+
+```
+for (let index=0; index<div.length; index +=2)
+{
+  div[index].style.background = 'rgb('+getRandomInt()+','+getRandomInt()+','+getRandomInt()+')';
+}
+
+function getRandomInt() {
+  return Math.floor(Math.random() * 256);
+}
+```
+********
+###<center>LES METHODES</center>
+
+##<u>AddEventListener</u>
+La méthode addEventListener() de EventTarget attache une fonction à appeler chaque fois que l'évènement spécifié est envoyé à la cible.
+
+Les cibles courantes sont un Element, le Document lui-même et une Window, mais on peut tout à fait cibler n'importe quel objet prenant en charge les évènements (comme XMLHttpRequest).
+
+addEventListener() agit en ajoutant une fonction ou un objet qui implémente EventListener à la liste des gestionnaires d'évènement pour le type d'évènement spécifié sur la cible (EventTarget) à partir de laquelle il est appelé.
+
+##<u>SetAttribute</u>
+Définit la valeur d'un attribut sur l'élément spécifié. Si l'attribut existe déjà, la valeur est mise à jour ; sinon, un nouvel attribut est ajouté avec le nom et la valeur spécifiés.
+
+Pour obtenir la valeur actuelle d'un attribut, utilisez getAttribute(); pour supprimer un attribut, appelez removeAttribute().
 
 
+##<u>GetAttribute</u>
+La getAttribute()méthode de l' Elementinterface renvoie la valeur d'un attribut spécifié sur l'élément.
+
+Si l'attribut donné n'existe pas, la valeur renvoyée sera soit nullou ""(la chaîne vide)

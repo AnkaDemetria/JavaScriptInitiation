@@ -1,0 +1,20 @@
+.carre{
+    height: 80px;
+    width: 80px;
+    background: rgb(red, green, blue);
+}
+
+.btn{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.test,
+.carre{
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    background-color: rgb(236, 224, 56);
+}
